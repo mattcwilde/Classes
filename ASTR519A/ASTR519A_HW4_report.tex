@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+%SetFonts
+
+%SetFonts
+
+
+\title{Line-Emission From the Broad Line Regions in AGN}
+\author{Matthew Wilde}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{Useful equations}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%INTRO%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Active Galactic Nuclei have been observed to have incredibly disparate observational properties. However, over the years a unified model has been proposed that attempts to explain the observations. Many AGN, including Seyfert 1, quasars and QSOs show the presence of broad emission lines and it has been proposed that these broad lines originate from a discrete Broad-Line Region (BLR) although even this is contentious$^{3}$. However, the radiation from this bound-bound process that produces emission lines can illuminate many properties of AGN. 
+	
+	All of the broad lines are the result of photoionization and then recombination by the continuum radiation and are not thermal. The source of this continuum radiation thought to be from the accretion onto the central SMBH residing nearly all galaxies. The luminosity produced is from the release of gavational energy and is given by$^{1}$:
+	
+\begin{equation}
+L = \eta \dot{M} c^{2}
+\end{equation}
+
+with a spectrum given by:
+
+\begin{equation}
+L_{\nu} = C \nu^{1/3}
+\end{equation}
+
+However, this is not the spectrum observed. Effects of the jet and plasma near the black hole significantly change the spectrum and thus the spectrum of ionizing radiation is given by:
+
+\begin{equation}
+f \propto \nu^{-1.5}
+\end{equation}
+
+for $500 \AA < \lambda < 1200 \AA$. The optical depth at the Lyman limit can be as high as $10^{2}$, giving:
+
+
+\begin{equation}
+\tau_{0,Ly \alpha} \approx 10^{6}
+\end{equation}
+
+at line center with an Einstein A coefficient$^{4}$ of $A_{Ly\alpha} = 6.3 \times 10^8 s^{-1}$ . 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%density and temp %%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	The lack of forbidden line emission (due to collisions)  are indicative that the regions are very dense,  since at such high density, the ions which would give rise to the forbidden transitions have all been collisionally deexcited $^{1}$.  More precisely $n_{c} ( $[O III]$ ) \approx 10^{6} $cm$^{-3}  \Rightarrow \frac{n_{e}}{ n_{c}} > 10^{6}$ where $n_{c}$ is the critical electron density at which [O III] is suppressed. We can also use the lack of certain broad lines to set an upper limit on the density. We observe in several Seyfert 1 and 1.5 galaxies as well as BLRGs a broad ultraviolet intercombination line C III] $\lambda$1909. The presence of this line implies the density in the triply ionized C zone (C$^{+3}$) must be $n_{e} \leq n_{c} $(C III) $\approx 10^{10}$ cm${-3}$. Therefore we adopt a density $n_{e} = 10^{9} - 10^{10}$ cm$^{-3}$.
+
+
+	The line emission can not tell us an accurate temperature however, since there are not good temperature diagnostics from H I, He I, and He II emission$^{1,2}$. An upper limit can be set by the presence of Fe II, since at high temperatures (T $>$ 35,000 K) it would be collisionally ionized to Fe III even with out ionizing photons$^{1,2}$, thus the lack of Fe III gives us an estimate of the temperature with T $\approx 10^{4}$ assumed by most sources$^{1,2,3}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Size%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We can relate the strength of the line emission to the mass of ionized gas since the majority of the source of the emission is photoionization. If the volume of the emitting system $V = \frac{4 \pi R^{3}}{3}$ and $\epsilon$ is the filling factor (assumed to be 10$^{-3}$, although this is not widely agreed upon$^{3}$. From OF Eq. 13.7:
+
+
+\begin{equation}
+L (H\beta) = n_{e}n_{p} \alpha^{eff}_{H\beta} h \nu_{H\beta} V \epsilon [\text{erg s}^{-1}] \Rightarrow R = \frac{3 L (H\beta)}{4 n_{e}n_{p} \alpha^{eff}_{H\beta} h \nu_{H\beta} \epsilon}
+\end{equation}
+
+ The mass of the system is given by OF Eq. 13.8:
+
+\begin{equation}
+M = (n_{p}m_{p} + n_{He}m_{He})V\epsilon
+\end{equation}
+
+	We assume solar metallicity ($n_{He} = 0.1 n_{p}$) and that there is an equal mix of He$^{+}$ and He$^{2+}$ and since line emission has given us an estimate of the density and typical brightness of the $L(H\beta)$ is $\approx 10^{9} L_{\odot}$ we get $M_{ion} > 40 M_{\odot}$  and $R = 0.07 pc$. Thus we see these broad lines are coming from a very small region. Unfortunately, even for the closest AGNs, this remains unresolvable. The timescale of variation of the H$\alpha$ and H$\beta$ lines are approximately one month which can also help to constrain the size of the regions since $t \approx 0.1$ yr corresponds to a size of $R = 0.03 pc$
+	
+	The width of the lines is of order $ \approx 10^{3} km / s $. Since it is not thermal broadening, T $\approx 10^{4}$ K and these widths are much larger than doppler broadening can provide, it implies Keplarian motion which fits the model that they are orbiting in the central SMBH.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%putting it all together%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Thus we get a general picture of dense, optically thick, dust free gas (dust would destroy the emission lines) orbiting the galactic nuclei at scales $<$ 1 pc. This gas is in clumps thought to be in clumps and is reprocessing a featureless continuum of photoionizing radiation into the visible range, ostensibly from a very hot thin disk accreting onto the black hole plus a plasma arising from a jet created at the black hole disk interface.  
+
+
+
+References:
+1) Astrophysics of gaseous nebulae and active galactic nuclei. --2nd ed. / 
+Donald E. Osterbrock, Gary J. Ferland 
+
+2) Modern Astrophysics / Bradley W. Carroll, Dale A. Ostlie.
+
+3) Revisiting the Unified Model of Active Galactic Nuclei
+Hagai Netzer, Annual Review of Astronomy and Astrophysics, 
+Vol. 53: 365 -408 (Volume publication date August 2015)
+
+4) \text{http://www.physics.byu.edu/faculty/christensen/Physics}
+
+\end{document}  

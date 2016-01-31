@@ -1,0 +1,6 @@
+To compile and run code on Hyak:
+
+make sure both files in same directory and type:
+ $ python myprogram.py
+ 
+ which will call the particle module (particle.py).

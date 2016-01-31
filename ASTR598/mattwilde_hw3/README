@@ -1,0 +1,16 @@
+To compile and run code on Hyak:
+
+1) 	login to hyak:
+		$ ssh username@hyak.washington.edu
+	
+	start an interactive session using:
+		# qsub -I -q build walltime=3:00:00
+
+2) 	make sure both files in same directory and type:
+ 	$ python myprogram.py
+
+ 	which will call the particle module linkedlist.
+
+ 	my program will create a linked list and add a few nodes to the head, delete a node from the head then add 3 nodes to the tail.
+
+ 	(c) we do not have a funciton: delete_at_tail() because to perform the action of deleting the tail, we would have to loop from the first node to the new last node to change its pointer to null.
