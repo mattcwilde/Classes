@@ -1,0 +1,920 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{LAB\_B1}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section*{1 Stratification of the solar
+atmosphere}\label{stratification-of-the-solar-atmosphere}
+
+\subsection*{1.1 FALC temperature
+stratification}\label{falc-temperature-stratification}
+
+\textbf{Figure 2 shows the FALC temperature stratification. It was made
+with IDL code similar to the following. Write similar code and make it
+work.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib} \PY{k+kn}{as} \PY{n+nn}{mpl}
+        \PY{k+kn}{import} \PY{n+nn}{astropy.constants} \PY{k+kn}{as} \PY{n+nn}{const}
+        
+        \PY{c}{\PYZsh{}use the pretty LaTeX fonts}
+        \PY{n}{mpl}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{text.usetex}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb+bp}{True}\PY{p}{\PYZcb{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{rc}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{font}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{family}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{serif}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+        \PY{n}{mpl}\PY{o}{.}\PY{n}{rc}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{axes.formatter}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{useoffset}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} plt.style.use(\PYZsq{}ggplot\PYZsq{})}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{k} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{k\PYZus{}B}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{o}{!}head falc.dat
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+FALC solar model atmosphere of Fontenla, Avrett \& Loeser 1993ApJ{\ldots}406..319F; 82 heights top-to-bottom
+ height   tau\_500    colmass    temp    v\_turb n\_Htotal   n\_proton   n\_electron pressure  p\_gas/p  density
+ [km]     dimless    [g/cm\^{}2]   [K]     [km/s] [cm\^{}-3]    [cm\^{}-3]    [cm\^{}-3]    [dyn/cm2] ratio    [g/cm\^{}3]
+ 
+ 2218.20  0.000E+00  6.777E-06  100000  11.73  5.575E+09  5.575E+09  6.665E+09  1.857E-01  0.952  1.306E-14
+ 2216.50  7.696E-10  6.779E-06   95600  11.65  5.838E+09  5.837E+09  6.947E+09  1.857E-01  0.950  1.368E-14
+ 2214.89  1.531E-09  6.781E-06   90816  11.56  6.151E+09  6.150E+09  7.284E+09  1.858E-01  0.948  1.441E-14
+ 2212.77  2.597E-09  6.785E-06   83891  11.42  6.668E+09  6.667E+09  7.834E+09  1.859E-01  0.945  1.562E-14
+ 2210.64  3.754E-09  6.788E-06   75934  11.25  7.381E+09  7.378E+09  8.576E+09  1.860E-01  0.941  1.729E-14
+ 2209.57  4.384E-09  6.790E-06   71336  11.14  7.864E+09  7.858E+09  9.076E+09  1.860E-01  0.938  1.843E-14
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c}{\PYZsh{} read in the data}
+        \PY{n}{h}\PY{p}{,} \PY{n}{tau5}\PY{p}{,} \PY{n}{colm}\PY{p}{,} \PY{n}{temp}\PY{p}{,} \PY{n}{vturb}\PY{p}{,} \PY{n}{nhyd}\PY{p}{,} \PY{n}{nprot}\PY{p}{,} \PY{n}{nel}\PY{p}{,} \PY{n}{ptot}\PY{p}{,} \PY{n}{pgasptot}\PY{p}{,} \PY{n}{dens} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{falc.dat}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{skiprows}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{unpack}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+        
+        \PY{n}{hsun} \PY{o}{=} \PY{n}{h}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,}\PY{n}{temp}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mi}{3000}\PY{p}{,}\PY{l+m+mi}{10000}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{temperature [K]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{FALC temperature stratification}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_5_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{1.2 FALC density
+stratification}\label{falc-density-stratification}
+
+\textbf{Plot the total pressure \(p_{total}\) against the column mass
+\(m\), both linearly and logarithmically. You will find that they scale
+linearly. Exlpain what assumption has caused \(p_{total} = c m\) and
+determine the value of solar surface gravity \(g = c\) that went into
+the FALC-producing code.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{ncols}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+        
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{colm}\PY{p}{,}\PY{n}{ptot}\PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{column mass [g cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}2\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{pressure [dyne cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}2\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{colm}\PY{p}{,}\PY{n}{ptot}\PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{column mass [g cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}2\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_7_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We assumed hydrostatic equilibrium.
+
+\[ \frac{P}{h} = \rho g  = \frac{m g}{V} = \frac{m_{col}g}{h} \rightarrow  P = gm \]
+
+And \(g = 27396.5 \rightarrow log g = 4.4\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{g} \PY{o}{=} \PY{p}{(}\PY{n}{ptot}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{ptot}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{colm}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{colm}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} 
+        \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{solar g, logg = }\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{g}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{g}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+solar g, logg =  27396.5215001 4.43769542453
+    \end{Verbatim}
+
+    \textbf{Fontenla et al (1993) also assumed complete mixing, i.e., the
+same element mix at all heights. Check this by plotting the ratio of the
+hydrogen mass density to the total mass density against height. Then add
+helium to hydrogen using their abundance and mass ratios
+(\(N_{He}/N_{H} = 0.1, m_{He} = 3.97 m_{H}\)), estimate the fraction of
+the total mass density made up by the remaining elements in the model
+mix (``the metals'').}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{mh} \PY{o}{=} \PY{l+m+mf}{1.67352e\PYZhy{}24} \PY{c}{\PYZsh{} mass of hydroen [g]}
+        \PY{n}{H\PYZus{}ratio} \PY{o}{=} \PY{n}{nhyd}\PY{o}{*}\PY{n}{mh} \PY{o}{/} \PY{n}{dens}
+        \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,}\PY{n}{H\PYZus{}ratio}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{H}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{density fraction of H}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_11_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+        \PY{n}{HHe\PYZus{}ratio} \PY{o}{=} \PY{p}{(}\PY{n}{nhyd}\PY{o}{*}\PY{n}{mh} \PY{o}{+} \PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{nhyd}\PY{o}{*}\PY{l+m+mf}{3.97}\PY{o}{*}\PY{n}{mh}\PY{p}{)} \PY{o}{/} \PY{n}{dens}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{HHe\PYZus{}ratio}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{density fraction of H + He}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_12_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{p}{)}
+         \PY{n}{metal\PYZus{}ratio} \PY{o}{=} \PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{n}{nhyd}\PY{o}{*}\PY{n}{mh} \PY{o}{+} \PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{nhyd}\PY{o}{*}\PY{l+m+mf}{3.97}\PY{o}{*}\PY{n}{mh}\PY{p}{)}\PY{o}{/}\PY{n}{dens}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{metal\PYZus{}ratio}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{density fraction of metals}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_13_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{r\PYZdq{}}\PY{l+s}{average metal fraction is \PYZti{} \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{HHe\PYZus{}ratio}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+average metal fraction is \textasciitilde{} 0.0022
+    \end{Verbatim}
+
+    \textbf{Plot the column mass against height. The curve becomes nearly
+straight when you make the \(y\)-axis logarithmic. Why is that? Why
+isn't it exactly straight?}
+
+It is neary straight since via hydrostaic equilibrium
+\(log(m_{col}) = -h \mu g/kT\) but it depends on \(\mu\) which changes
+slightly at different depths in the atmosphere as seen below.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{mu} \PY{o}{=} \PY{n}{dens}\PY{o}{/}\PY{p}{(}\PY{p}{(}\PY{n}{nhyd}\PY{o}{+}\PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{nhyd}\PY{o}{+}\PY{n}{nprot}\PY{p}{)}\PY{o}{*}\PY{n}{mh}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,}\PY{n}{mu}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} <matplotlib.text.Text at 0x106a74450>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_16_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{ncols}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{colm}\PY{p}{)}
+         \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{column mass [g cm\PYZca{}\PYZhy{}2]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{colm}\PY{p}{)}
+         \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{fig}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_17_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Plot the gas density against height. Estimate the density scale
+height \(H_{\rho}\) in \(\rho \approx \rho(0)exp(-h/H_{\rho})\) in the
+photosphere.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{def} \PY{n+nf}{rho}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{rho0}\PY{p}{,} \PY{n}{H}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{rho0}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{h}\PY{o}{/}\PY{n}{H}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{dens}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{rho}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{dens}\PY{p}{[}\PY{l+m+mi}{79}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{125}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{1500}\PY{p}{,}\PY{l+m+mf}{1e\PYZhy{}8}\PY{p}{,} \PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}H\PYZus{}\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{rho\PYZcb{} = 125\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{gas density [g cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}3\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    scale height \(H_{\rho} \approx 125\)
+
+    \textbf{Compute the gas pressure and plot it against height. Overplot
+the product \((nH+ne)kT\). Plot the ratio of the two curves to show
+their differences. Do the differences measure deviations from the ideal
+gas law or something else? Now add the helium density NHe to the product
+and enlarge the deviations. Comments?}
+
+The differences are not deviations from the ideal gas law, rather they
+reflect the fact we arent including the contribution from He.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c}{\PYZsh{}\PYZdl{} P\PYZus{}\PYZob{}gas\PYZcb{} = P\PYZus{}\PYZob{}tot\PYZcb{} \PYZhy{} \PYZbs{}rho v\PYZus{}\PYZob{}t\PYZcb{}\PYZca{}2/2 \PYZdl{}}
+         \PY{c}{\PYZsh{}pgas = ptot \PYZhy{} dens*vturb**2/2}
+         \PY{n}{pgas} \PY{o}{=} \PY{n}{pgasptot}\PY{o}{*}\PY{n}{ptot}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{pgas}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}P\PYZus{}\PYZob{}gas\PYZcb{}\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{p}{(}\PY{n}{nhyd}\PY{o}{+}\PY{n}{nel}\PY{p}{)}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temp}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}(nH+ne)kT\PYZdl{}}\PY{l+s}{\PYZsq{}} \PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{pressure [dyn cm\PYZca{}\PYZhy{}2]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_22_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{p2} \PY{o}{=} \PY{p}{(}\PY{n}{nhyd}\PY{o}{+}\PY{n}{nel}\PY{p}{)}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temp}
+         \PY{n}{p3} \PY{o}{=} \PY{p}{(}\PY{n}{nhyd}\PY{o}{+}\PY{n}{nel}\PY{o}{+}\PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{nhyd}\PY{p}{)}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temp}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{p2}\PY{o}{/}\PY{n}{pgas}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}(n\PYZus{}H+n\PYZus{}e)kT/P\PYZus{}\PYZob{}gas\PYZcb{}\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ratio of pressures}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{upper left}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_23_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{p3} \PY{o}{=} \PY{p}{(}\PY{n}{nhyd} \PY{o}{+} \PY{n}{nel} \PY{o}{+} \PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{nhyd}\PY{p}{)}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temp}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{p3}\PY{o}{/}\PY{n}{pgas}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}(nH+nHe+ne)kT/P\PYZus{}\PYZob{}gas\PYZcb{}\PYZhy{}1 \PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ratio of pressures}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{upper left}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_24_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Comments?}
+
+The addition of the He density puts the gas pressure in agreement with
+the ideal gas law.
+
+    \textbf{Plot the total hydrogen density against height and overplot
+curves for the electron density, the proton density, and the density of
+the electrons that do not result from hydrogen ionization. Explain their
+behavior. You may find inspiration in Figure 6 on page 13. The last
+curve is parallel to the hydrogen density over a considerable height
+range. What does that imply? And what happens at larger height?}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{nhyd}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}n\PYZus{}H\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{nel}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}n\PYZus{}e\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{nprot}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}n\PYZus{}p\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{n\PYZus{}metal} \PY{o}{=} \PY{n}{nel} \PY{o}{\PYZhy{}} \PY{n}{nprot}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{n\PYZus{}metal}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}n\PYZus{}\PYZob{}metal e\PYZcb{}\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_27_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The \(n_p\) traces the temperature as it decreases then inverts. From
+\(h=0\) until the inversion, \(n_e\) is dominated by electrons coming
+from ionized metals. At the inversion, more H becomes ionized and this
+becomes the dominant electron source. The density of electrons due to
+metal ionization paralles the density of hydrogren since \(n_H\) traces
+the density of metals through out the atmosphere, which exponentially
+decreases with height. At larger heights up in the atmosphere the
+temperature rises enough to further ionization of the metals,
+increaseing the number of electrons (compared to the number of metal
+ions) and flattening out the \(n_{metal e^-}\)curve.
+
+    \textbf{Plot the ionization fraction of hydrogen logarithmically against
+height. Why does this curve look like the one in Figure 2? And why is it
+tilted with respect to that?}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{N} \PY{o}{=} \PY{n}{nprot} \PY{o}{+} \PY{n}{nel} \PY{o}{\PYZhy{}} \PY{n}{n\PYZus{}metal}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{N}\PY{o}{/}\PY{n}{nhyd}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}n\PYZus{}H\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZdl{}N/N\PYZus{}H\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_30_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The ionization fraction mirrors the temperature stratification since the
+temperature sets the ionization rate given by the Saha equation which
+scales as \(T^{3/2}e^{-T}\). This follows T until very high temperatures
+in the outer atmosphere where the exponential takes over and the
+ionization fraction diverges from the temperature curve.
+
+    ** Let us now compare the photon and particle densities. In
+thermodynamic equilibrium (TE) the radiation is isotropic with intensity
+\(I_{\nu} = B_{\nu}\) and has total energy density (Stefan Boltzmann)**
+
+\[u = \frac{1}{c} \iint B_{\nu}d\Omega d\nu = \frac{4\sigma}{c} T^4 \]
+
+\textbf{so that the total photon density for isotropic TE radiation is
+given, with \(u_{\nu} = du/d\nu\), \(T\) in K and \(N_{phot}\) in
+photons per cm\(^3\), by}
+
+\[ N_{phot} = \int_{0}^{\infty} \frac{u_{\nu}}{h\nu}d\nu \approx 20T^3 \]
+
+\textbf{This equation gives a reasonable estimate for the photon density
+at the deepest model location, why?}
+
+We are assuming the deepest levels are in LTE since the density is high
+enough for collisions to couple photons and Hydrogen.
+
+\textbf{Compute the value there and compare it to the hydrogen density.}
+
+\(N_{phot} = 1.6 \times 10^{13}\) and \(N_{phot}/N_{H} = 0.00012\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{20}\PY{o}{*}\PY{n}{temp}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+         \PY{c}{\PYZsh{}print n, nhyd[\PYZhy{}1], temp[\PYZhy{}1], temp[0]}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{n}\PY{o}{/}\PY{n}{nhyd}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{natmo} \PY{o}{=} \PY{l+m+mi}{20}\PY{o}{*}\PY{l+m+mi}{5770}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
+         
+         \PY{k}{print} \PY{n}{natmo}\PY{p}{,} \PY{n}{natmo}\PY{o}{/}\PY{n}{nhyd}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0.00012
+6.11473396401e+11 109.681326709
+    \end{Verbatim}
+
+    \textbf{Why is the equation not valid higher up in the atmosphere?} It
+is not valid higher up in the atmosphere because the density is low
+enough that we are in the NLTE regime.
+
+\textbf{The photon density there is
+\(N_{phot} \approx 20T_{eff}^{3}/2\pi\) with \(T_{eff} = 5770\)K the
+effective solar temperature (since
+\(\pi B(T_{eff}) = \sigma T_{eff}^3 = \mathscr{F}^{+} = \pi \overline{I^{+}}\)
+with \(\mathscr{F}^{+}\) the emergeng flux and \(\overline{I^{+}}\) the
+disk averaged emergent intensity). Compare it to the hydrogen density at
+the highest location in the FALC model. The medium there is insensitive
+to these photons (except those at the center wavelength of the hydrogen
+Ly \(\alpha\) line), why?}
+
+\(N_{phot} = 6 \times 10^{11}\) and \(N_{phot}/N_{H} = 110\)
+
+The medium is insensitive to these photons since the optical depth
+outside of line center is \(<<1\) (the pressure is low so there is no
+pressure broadening) and thus we are in NLTE due to the low density at
+these altitudes.
+
+    \subsection*{1.3 Comparison with the earth's
+atmosphere}\label{comparison-with-the-earths-atmosphere}
+
+\textbf{Write IDL code to read file earth.dat.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{o}{!}head earth.dat
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0   6.01   288   -2.91   19.41
+   1   5.95   282   -2.95   19.36
+   2   5.90   275   -3.00   19.31
+   3   5.85   269   -3.04   19.28 
+   4   5.79   262   -3.09   19.23
+   5   5.73   256   -3.13   19.19
+   6   5.67   249   -3.18   19.14
+
+   8   5.55   236   -3.28   19.04
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{h}\PY{p}{,} \PY{n}{logP}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{logdens}\PY{p}{,} \PY{n}{logN} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{earth.dat}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{unpack}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+\end{Verbatim}
+
+    \textbf{Plot the temperature, pressure, particle density and gas density
+against height, logarithmically where appropriate.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{T}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{T [K]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Temperature v height}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{1200}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{EARTH ATMOSPHERE}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_39_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{P} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logP}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{P}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{P [dyn cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}2\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Pressure v height}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_40_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logN}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{N}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{N [cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}3\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{particle density v height}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_41_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{dens} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logdens}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{dens}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{rho\PYZdl{} [g cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}3\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{gas density v height}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_42_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Plot the pressure and density stratifications together in
+normalized units in one graph. Comments?}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{c}{\PYZsh{} normalze:}
+         
+         \PY{n}{norm} \PY{o}{=} \PY{p}{(}\PY{n}{logP}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{+} \PY{n}{logdens}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{logdens}\PY{o}{/}\PY{n}{norm}\PY{o}{+}\PY{l+m+mf}{0.9}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{density}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{logP}\PY{o}{/}\PY{n}{norm}\PY{o}{\PYZhy{}}\PY{l+m+mf}{2.0}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{pressure}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{density, pressure [normalized]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{normalized stratification v height}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_44_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The pressure and density follow each other for most of the height of the
+atmosphere. However, they depart at around heights around 120km. This
+departure must be due to a difference in species at higher heights
+acording to the ideal gas law, \(P = (N/V)kT = (\rho/\mu)kT\).
+
+    \textbf{Plot the mean molecular weight
+\(\mu_E = \overline{m}/m_H = \rho/(N m_H)\) against height. Why does it
+decrease in the high atmosphere?}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{c}{\PYZsh{} h, logP, T, logdens, logN}
+         
+         \PY{n}{dens} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{n}{logdens}\PY{p}{)}
+         \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{n}{logN}\PY{p}{)}
+         
+         \PY{n}{mu} \PY{o}{=} \PY{n}{dens}\PY{o}{/}\PY{p}{(}\PY{n}{N}\PY{o}{*}\PY{n}{mh}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{mu}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{mean molecular weight per particle}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_48_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    The mean molecular weight decreases high in the atmosphere because
+heavier molecules segregate to the lower atmosphere as only the lighter
+molecules have enough kinetic energy to reach those heights. In
+addition, as the height increases molecules may become dissasociated due
+to UV dissociation.
+
+    \textbf{Estimate the density scales height of the lower terrestrial
+atmosphere. Which quantities make it differ from the solar one? How much
+harder do you have to breathe on Mount Everest?}
+
+The density profile makes the earth scale height differ from the solar
+scale height.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{dens}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{semilogy}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{rho}\PY{p}{(}\PY{n}{h}\PY{p}{,} \PY{n}{dens}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{rho\PYZdl{} [g cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}3\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{gas density v height}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{height [km]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{l+m+mf}{1e\PYZhy{}14}\PY{p}{,} \PY{l+m+mf}{1e\PYZhy{}2}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{text}\PY{p}{(}\PY{l+m+mi}{200}\PY{p}{,}\PY{l+m+mf}{1e\PYZhy{}6}\PY{p}{,} \PY{l+s}{r\PYZdq{}}\PY{l+s}{\PYZdl{}H\PYZus{}\PYZob{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{rho\PYZcb{} = \PYZdl{}7 km}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{LAB_B1_files/LAB_B1_51_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{density at summit}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{dens}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]} \PY{o}{/} \PY{n}{dens}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{pressure at summit}\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logP}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]} \PY{o}{/} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logP}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+density at summit 0.338844156139
+pressure at summit 0.257039578277
+    \end{Verbatim}
+
+    Everest is \textasciitilde{}9000m \textasciitilde{}10km so the gas
+density is \textasciitilde{}1/3 (slightly less than \(1/e\)) the density
+at sea level while the pressure is 1/4 that of the surface. Therefore
+one would have to breath \textasciitilde{}3 times harder to get the same
+amount of oxygen.
+
+    \textbf{Compare the terrestrial parameter values to the solar ones, at
+the base of each atmosphere. What is the ratio of the particle densities
+at h = 0 in the two atmospheres?}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{c}{\PYZsh{} terrestrial: h, logP, T, logdens, logN}
+         \PY{c}{\PYZsh{} solar: hsun, ptot, temp, dens, nhyd}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{      solar }\PY{l+s+se}{\PYZbs{}t}\PY{l+s}{ earth}\PY{l+s}{\PYZdq{}}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{h     \PYZob{}:.2\PYZcb{} }\PY{l+s+se}{\PYZbs{}t}\PY{l+s}{ \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{hsun}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,} \PY{n}{h}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{press \PYZob{}:.2\PYZcb{} }\PY{l+s+se}{\PYZbs{}t}\PY{l+s}{ \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{ptot}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logP}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{temp  \PYZob{}:.2\PYZcb{} }\PY{l+s+se}{\PYZbs{}t}\PY{l+s}{ \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{temp}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,} \PY{n}{T}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{dens  \PYZob{}:.2\PYZcb{} }\PY{l+s+se}{\PYZbs{}t}\PY{l+s}{ \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{dens}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logdens}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{N     \PYZob{}:.2\PYZcb{} }\PY{l+s+se}{\PYZbs{}t}\PY{l+s}{ \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{nhyd}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logN}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{ratio of particle density N\PYZus{}earth/N\PYZus{}sun \PYZob{}:.4\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logN}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{/}\PY{n}{nhyd}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{11}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+solar 	 earth
+h     0.0 	 0.0
+press 1.2e+05 	 1e+06
+temp  6.5e+03 	 2.9e+02
+dens  3.2e-07 	 0.0012
+N     1.2e+17 	 2.6e+19
+
+
+ratio of particle density N\_earth/N\_sun 217.5
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{mcol\PYZus{}earth} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{n}{logP}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{/}\PY{l+m+mf}{980.665}
+         \PY{k}{print} \PY{n}{mcol\PYZus{}earth}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1043.46845486
+    \end{Verbatim}
+
+    \textbf{The standard gravity at the earth's surface is \(g_E = 980.665\)
+cm s\(^{−2}\). Use this value to estimate the atmospheric column mass (g
+cm\(^{−2}\)) at the earth's surface and compare that also to the value
+at the base of the solar atmosphere.}
+
+using \(P_{tot} = g m_{col} \rightarrow m_{col} = 1043.46 g/cm^2\)
+
+\textbf{Final question: the energy flux of the sunshine reaching our
+planet (``irradiance'') is}
+
+\[ \mathscr{R} = \frac{4\pi R^2}{4\pi D^2} = \mathscr{F}^+_{\odot} \]
+
+\textbf{with \(\mathscr{F}^+_{\odot} = \pi B(T^{\odot}_{eff})\) the
+emergent solar flux, \(R\) the solar radius and \(D\) the sun-earth
+distance so that the sunshine photon density at earth is}
+
+\[ N_{phot} = \pi \frac{R^2}{D^2} N^{top}_{phot} \]
+
+\textbf{with \(N^{top}_{phot}\) the photon density at the top of FALC
+which you determined at the end of Section 1.1. Compare \(N_{phot}\) to
+the particle density in the air around us, and to the local thermal
+photon production derived from (2). Comments?}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{R} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{R\PYZus{}sun}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+         \PY{n}{D} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{au}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+         \PY{n}{Teff} \PY{o}{=} \PY{l+m+mi}{5770}
+         \PY{n}{Nphot\PYZus{}sun} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{20}\PY{o}{*}\PY{n}{Teff}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
+         \PY{n}{Nphot\PYZus{}earth} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{p}{(}\PY{n}{R}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{n}{D}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{*} \PY{n}{Nphot\PYZus{}sun}
+         
+         \PY{n}{Tearth} \PY{o}{=} \PY{n}{T}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} 
+         \PY{n}{Nphot\PYZus{}from\PYZus{}earth} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{20}\PY{o}{*}\PY{n}{Tearth}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{photon density at earth from the sun: \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Nphot\PYZus{}earth}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{particle density around us: \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{n}{logN}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{local thermal photon production: \PYZob{}:.2\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{Nphot\PYZus{}from\PYZus{}earth}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+photon density at earth from the sun: 4.2e+07
+particle density around us: 2.6e+19
+local thermal photon production: 7.6e+07
+    \end{Verbatim}
+
+    The photon density is \textasciitilde{}11 orders of magnitude less than
+the particle density at the surface of earth. In addition the local
+thermal photon production is greater than that recieved by the sun.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
