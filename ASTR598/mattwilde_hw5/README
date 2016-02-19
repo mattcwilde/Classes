@@ -1,0 +1,19 @@
+HW5:
+
+This program creates a PriorityQueue data structure.
+
+To compile and run code on Hyak:
+
+1) 	login to hyak:
+		$ ssh username@hyak.washington.edu
+	
+	start an interactive session using:
+		# qsub -I -q build walltime=3:00:00
+
+2) 	make sure both files in same directory and type:
+ 	$ python myprogram.py
+
+ 	which will call the module PriorityQueue. It will then create a new 
+ 	instance of a PriorityQueue and insert 20 random integers. It will
+ 	then use its method delMin() to delete the minimum and print it out
+ 	20 times

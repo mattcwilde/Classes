@@ -1,0 +1,10 @@
+1) 	login to hyak:
+		$ ssh username@hyak.washington.edu
+	
+	start an interactive session using:
+		# qsub -I -q build walltime=3:00:00
+
+2) 	make sure both files in same directory and type:
+ 	$ python myprogram.py
+
+ 	which will call the module mergesort. It will then make 4 arrays of various lenghts of random ints (using numpy) and mergesort them. Each mergesort is timed and a plot is made comparing the time to NlogN
