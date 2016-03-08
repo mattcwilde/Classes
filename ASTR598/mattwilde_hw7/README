@@ -1,0 +1,12 @@
+To access hyak:
+
+1) ssh mwilde@hyak.washington.edu
+
+2) qsub -I -q build (can add walltime=3:00:00)
+
+3) scp your folder to your local directory (where it dumps you out)
+
+4) python myprogram.py
+
+
+Running my program.py will import a binary search tree class, generate 100 random ints, and traverse through the BST, printing them as it goes.

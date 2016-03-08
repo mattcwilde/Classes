@@ -1,4 +1,4 @@
-def sort(a, lo, hi):
+def sort(a, lo, hi, aux):
     # base case of recursion to end recursion
     if (hi <= lo):
         return
@@ -14,21 +14,21 @@ def sort(a, lo, hi):
     # sort left half
 
     # if the parameters were equal to the initial parameters it would run forever
-    sort(a, lo, mid) 
+    sort(a, lo, mid, aux) 
 
     # sort right half
-    sort(a, mid+1, hi) 
+    sort(a, mid+1, hi, aux) 
 
     #now merge the two sorted halfs
-    merge(a, lo, mid, hi)
+    merge(a, lo, mid, hi, aux)
 
 
-def merge(a, lo, mid, hi):
+def merge(a, lo, mid, hi, aux):
     i = lo
     j = mid + 1
 
     # make a copy
-    aux = [0]*len(a)
+    #aux = [0]*len(a)
     aux[lo:hi+1] = a[lo:hi+1]
 
     k = lo
@@ -58,9 +58,8 @@ def merge(a, lo, mid, hi):
     return a  
 
 def mergesort(a):
-    #aux = [0]*len(a)
-    #aux = np.copy(a)
+    aux = [0]*len(a)
     # overloading funciton ok since takes a different amount of input
     # signature of function is different so computer names them differently
-    sort(a, 0, len(a)-1)
+    sort(a, 0, len(a)-1, aux)
     return a
