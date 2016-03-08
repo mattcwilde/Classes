@@ -1,0 +1,7 @@
+*.db
+*.fit
+*.fits
+*.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.attr
+*.DS_Store
