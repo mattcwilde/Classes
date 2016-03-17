@@ -1,0 +1,821 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Lab-B3}
+    \author{Matt Wilde}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+
+
+\section*{3 Spectral lines from the solar
+atmosphere}\label{spectral-lines-from-the-solar-atmosphere}
+
+\subsection*{3.1 Observed Na D line
+profiles}\label{observed-na-d-line-profiles}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Pull the data that went into making Figure 8 over from
+  ftp://vso.nso.edu/pub/atlas/visatl. Concatenate the files covering the
+  two Na I D lines (sp16900 and sp16950) into a single file, deleting
+  the overlaps.}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c}{\PYZsh{} first import everything}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib} \PY{k+kn}{as} \PY{n+nn}{mpl}
+        \PY{k+kn}{import} \PY{n+nn}{astropy.constants} \PY{k+kn}{as} \PY{n+nn}{const}
+        
+        \PY{c}{\PYZsh{}use the pretty LaTeX fonts}
+        \PY{n}{mpl}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{text.usetex}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{n+nb+bp}{True}\PY{p}{\PYZcb{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{rc}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{font}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{family}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{serif}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{15}\PY{p}{)}
+        \PY{c}{\PYZsh{}mpl.rc(\PYZsq{}axes.formatter\PYZsq{}, useoffset=False)}
+        
+        \PY{c}{\PYZsh{} plt.style.use(\PYZsq{}ggplot\PYZsq{})}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{Write IDL code to read these data. You need the first and
+  third columns (see the README)}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{freq}\PY{p}{,} \PY{n}{telluric}\PY{p}{,} \PY{n}{spec}\PY{p}{,} \PY{n}{corrspec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{NaD.dat}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{unpack}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+\end{Verbatim}
+
+    \subsection*{{3.2 Na D wavelengths}\label{na-d-wavelengths}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{Plot the solar Na I D lines against vacuum wavelength at
+  various dispersions.}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{wave} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{freq}\PY{p}{)}\PY{o}{*}\PY{l+m+mf}{1e8}
+        
+        \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{nrows}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{n}{sharex}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{subplots\PYZus{}adjust}\PY{p}{(}\PY{n}{hspace}\PY{o}{=}\PY{l+m+mf}{0.0}\PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{wave}\PY{p}{,} \PY{n}{spec}\PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Na I D in vacuum}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{normalized flux}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{wave}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{50}\PY{p}{]}\PY{p}{,} \PY{n}{spec}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{50}\PY{p}{]}\PY{p}{)}
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{vacuum wavelength [angstroms]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        
+        
+        \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{wave}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{,} \PY{n}{spec}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{)}
+        
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Lab-B3_files/Lab-B3_6_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{Find the vacuum wavelengths of their minima (use the IDL
+  \texttt{where} and \texttt{min} functions)}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{min1} \PY{o}{=} \PY{n}{wave}\PY{p}{[}\PY{n}{spec}\PY{o}{.}\PY{n}{argmin}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+        \PY{n}{tmp} \PY{o}{=} \PY{n}{wave}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{3800}\PY{p}{]}
+        \PY{n}{min2} \PY{o}{=} \PY{n}{tmp}\PY{p}{[}\PY{n}{spec}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{3800}\PY{p}{]}\PY{o}{.}\PY{n}{argmin}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{The Na I D2 and D1 line are at }\PY{l+s}{\PYZdq{}}\PY{p}{,}\PY{n}{min1}\PY{p}{,} \PY{n}{min2}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{angstroms}\PY{l+s}{\PYZdq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The Na I D2 and D1 line are at  5891.57811281 5897.55475585 angstroms
+    \end{Verbatim}
+
+    \begin{itemize}
+\item
+  \textbf{Check that the Na I D wavelengths tabulated in the solar
+  spectrum line list of Moore et al. (1966) (computer-readable at
+  ftp://vso.nso.edu/pub/atlas/linelist/Moore) are
+  \(\lambda = 5895.94 \unicode{xC5}\) for Na I D1 and
+  \(\lambda = 5889.97 \unicode{xC5}\) for Na I D2. Check the
+  identification of a few blends (other lines) in Figure 8 with the
+  entries in this table.}
+
+\begin{verbatim}
+5889.973M *   752.   120.SS       NA 1(D2)    0.00  1
+
+5895.940M *   564.    91.S        NA 1(D1)    0.00  1        
+\end{verbatim}
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{The Astrolib3 routines airtovac and vactoair convert air into
+  vacuum wavelengths and vice versa. A reasonably accurate
+  transformation is also given by }
+\end{itemize}
+
+\[\lambda_{air} = 0.99972683 \lambda_{vac} + 0.0107 - 196.25/\lambda_{vac}\]
+
+\textbf{with both \(\lambda\)s in \(\unicode{xC5}\), from Neckel 1999.
+Use this equation or routine vactoair to plot the Na I D lines }
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{vactoair}\PY{p}{(}\PY{n}{lam}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{l+m+mf}{0.99972683}\PY{o}{*}\PY{n}{lam} \PY{o}{+} \PY{l+m+mf}{0.0107} \PY{o}{\PYZhy{}} \PY{l+m+mf}{196.25}\PY{o}{/}\PY{n}{lam}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{wave\PYZus{}air} \PY{o}{=} \PY{n}{vactoair}\PY{p}{(}\PY{n}{wave}\PY{p}{)}
+        
+        \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{wave\PYZus{}air}\PY{p}{,} \PY{n}{spec}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{wavelength [angstroms]}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{normalized flux}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Na in air}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Lab-B3_files/Lab-B3_13_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{3.6 Implementation}\label{implementation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Implement the above into a function that returns the line
+  extinction at all heights of the FALC atmosphere, for example
+  \texttt{NaD1\_ext(wav,temp,eldens,nhyd,vmicro)}. It is best to make
+  this a set of subroutines that process the atmospheric arrays in one
+  go, without \texttt{for\ ih=0,nh-1\ do\ begin} unrolling because that
+  results in much slower execution.}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{partfuncNaI}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} }
+        \PY{l+s+sd}{        NaI partfucntion from Gray (1992)}
+        
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{theta} \PY{o}{=} \PY{l+m+mf}{5040.}\PY{o}{/}\PY{n}{t}
+            
+            \PY{n}{cc} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{0.30955}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mf}{0.17778}\PY{p}{,} \PY{l+m+mf}{1.10594}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mf}{2.42847}\PY{p}{,} \PY{l+m+mf}{1.70721}\PY{p}{]}\PY{p}{)}
+            \PY{n}{logU\PYZus{}NaI} \PY{o}{=} \PY{n}{cc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{+} \PY{n}{cc}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{theta}\PY{p}{)} \PY{o}{+} \PY{n}{cc}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{theta}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+            \PY{n}{logU\PYZus{}NaI} \PY{o}{=} \PY{n}{logU\PYZus{}NaI} \PY{o}{+} \PY{n}{cc}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{theta}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3} \PY{o}{+} \PY{n}{cc}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{theta}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{4}
+            \PY{k}{return} \PY{l+m+mf}{10.}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{n}{logU\PYZus{}NaI}\PY{p}{)}
+        
+        
+        \PY{k}{def} \PY{n+nf}{partfunc}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+            \PY{n}{u} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+            \PY{n}{u}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{partfuncNaI}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+            \PY{n}{u}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{l+m+mf}{1.}
+            \PY{n}{u}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{=} \PY{l+m+mf}{6.}
+            \PY{k}{return} \PY{n}{u}
+        
+        
+        \PY{k}{def} \PY{n+nf}{boltz}\PY{p}{(}\PY{n}{temp}\PY{p}{,}\PY{n}{r}\PY{p}{,}\PY{n}{s}\PY{p}{)}\PY{p}{:}
+            \PY{c}{\PYZsh{} n\PYZus{}r,s / N\PYZus{}r}
+            
+            \PY{c}{\PYZsh{}r = 1 \PYZsh{} NaI D1}
+            \PY{c}{\PYZsh{}s = 1 \PYZsh{} NaI D1}
+            \PY{n}{kev}\PY{o}{=}\PY{l+m+mf}{8.61734e\PYZhy{}5} \PY{c}{\PYZsh{} Boltzmann constant (eV/deg)}
+            \PY{n}{kevT}\PY{o}{=}\PY{n}{kev}\PY{o}{*}\PY{n}{temp}
+            \PY{n}{u}\PY{o}{=}\PY{n}{partfunc}\PY{p}{(}\PY{n}{temp}\PY{p}{)}
+            \PY{n}{keV}\PY{o}{=}\PY{l+m+mf}{8.61734e\PYZhy{}5} \PY{c}{\PYZsh{} Boltzmann constant in ev/deg}
+            \PY{n}{relnrs} \PY{o}{=} \PY{l+m+mf}{1.}\PY{o}{/}\PY{n}{u}\PY{p}{[}\PY{n}{r}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{p}{(}\PY{n}{s}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{keV}\PY{o}{*}\PY{n}{temp}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{relnrs}
+        
+            \PY{n}{chiion} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{5.139}\PY{p}{,}\PY{l+m+mf}{47.29}\PY{p}{,}\PY{l+m+mf}{71.64}\PY{p}{]}\PY{p}{)}
+            
+            \PY{n}{g\PYZus{}rs} \PY{o}{=} \PY{l+m+mi}{2}
+            
+            \PY{n}{out} \PY{o}{=} \PY{n}{g\PYZus{}rs}\PY{o}{/}\PY{n}{partfunc}\PY{p}{(}\PY{n}{temp}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{chiion}\PY{p}{[}\PY{n}{r}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{n}{kevT}\PY{p}{)}
+            \PY{k}{return} \PY{n}{out}
+        
+        \PY{k}{def} \PY{n+nf}{saha}\PY{p}{(}\PY{n}{temp}\PY{p}{,}\PY{n}{eldens}\PY{p}{,}\PY{n}{ionstage}\PY{p}{)}\PY{p}{:}
+            \PY{c}{\PYZsh{} N\PYZus{}r+1 / N\PYZus{}r}
+        
+            \PY{n}{kerg}\PY{o}{=}\PY{l+m+mf}{1.380658e\PYZhy{}16} \PY{c}{\PYZsh{} Boltzmann constant (erg K; double precision)}
+            \PY{n}{kev}\PY{o}{=}\PY{l+m+mf}{8.61734e\PYZhy{}5} \PY{c}{\PYZsh{} Boltzmann constant (eV/deg)}
+            \PY{n}{h}\PY{o}{=}\PY{l+m+mf}{6.62607e\PYZhy{}27} \PY{c}{\PYZsh{} Planck constant (erg s)}
+            \PY{n}{elmass}\PY{o}{=}\PY{l+m+mf}{9.109390e\PYZhy{}28} \PY{c}{\PYZsh{} electron mass (g) }
+            \PY{c}{\PYZsh{} kT and electron density}
+            \PY{n}{kevT}\PY{o}{=}\PY{n}{kev}\PY{o}{*}\PY{n}{temp}
+            \PY{n}{kergT}\PY{o}{=}\PY{n}{kerg}\PY{o}{*}\PY{n}{temp}
+            \PY{n}{eldens}
+            \PY{n}{chiion} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{5.139}\PY{p}{,}\PY{l+m+mf}{47.29}\PY{p}{,}\PY{l+m+mf}{71.64}\PY{p}{]}\PY{p}{)}
+            \PY{c}{\PYZsh{} ionization energies for element E}
+            \PY{n}{u} \PY{o}{=} \PY{n}{partfunc}\PY{p}{(}\PY{n}{temp}\PY{p}{)} \PY{c}{\PYZsh{} get partition functions U[0]...u[3]}
+            \PY{n}{u} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{u}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)} \PY{c}{\PYZsh{} add estimated fifth value to get N\PYZus{}4 too}
+            \PY{n}{sahaconst} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{elmass}\PY{o}{*}\PY{n}{kergT}\PY{o}{/}\PY{p}{(}\PY{n}{h}\PY{o}{*}\PY{n}{h}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{l+m+mf}{1.5}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{2.}\PY{o}{/}\PY{n}{eldens}
+            \PY{n}{nstage}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+            \PY{c}{\PYZsh{} double\PYZhy{}precision float array}
+            \PY{n}{nstage}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{=}\PY{l+m+mf}{1.} \PY{c}{\PYZsh{} relative fractions only (no abundance)}
+            \PY{k}{for} \PY{n}{r} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{:}
+                \PY{n}{nstage}\PY{p}{[}\PY{n}{r}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{nstage}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{o}{*}\PY{n}{sahaconst}\PY{o}{*}\PY{n}{u}\PY{p}{[}\PY{n}{r}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{/}\PY{n}{u}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{chiion}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{o}{/}\PY{n}{kevT}\PY{p}{)}
+                \PY{n}{ntotal}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{nstage}\PY{p}{)} \PY{c}{\PYZsh{} sum all stages = element density}
+            \PY{n}{nstagerel}\PY{o}{=}\PY{n}{nstage}\PY{o}{/}\PY{n}{ntotal} \PY{c}{\PYZsh{} fractions of element density}
+            \PY{k}{return} \PY{n}{nstagerel}\PY{p}{[}\PY{n}{ionstage}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{c}{\PYZsh{} ion stages start at 1, IDL at 0}
+        
+        \PY{k}{def} \PY{n+nf}{sahabolt}\PY{p}{(}\PY{n}{temp}\PY{p}{,}\PY{n}{eldens}\PY{p}{,}\PY{n}{ion}\PY{p}{,}\PY{n}{level}\PY{p}{)}\PY{p}{:}
+            \PY{c}{\PYZsh{} compute Saha\PYZhy{}Boltzmann populaton n\PYZus{}(r,s)/N for level r,s of E}
+            \PY{c}{\PYZsh{} input: temperature, electron pressure, ionization stage, level nr}
+            \PY{k}{return} \PY{n}{saha}\PY{p}{(}\PY{n}{temp}\PY{p}{,}\PY{n}{eldens}\PY{p}{,}\PY{n}{ion}\PY{p}{)} \PY{o}{*} \PY{n}{boltz}\PY{p}{(}\PY{n}{temp}\PY{p}{,}\PY{n}{ion}\PY{p}{,}\PY{n}{level}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c}{\PYZsh{} read in the FALC data}
+         \PY{n}{height}\PY{p}{,} \PY{n}{tau5}\PY{p}{,} \PY{n}{colm}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{vturb}\PY{p}{,} \PY{n}{n\PYZus{}Htotal}\PY{p}{,} \PY{n}{n\PYZus{}proton}\PY{p}{,} \PYZbs{}
+             \PY{n}{nel}\PY{p}{,} \PY{n}{ptot}\PY{p}{,} \PY{n}{pgasptot}\PY{p}{,} \PY{n}{dens} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{../HW4/falc.dat}\PY{l+s}{\PYZsq{}}\PY{p}{,}\PY{n}{skiprows}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{unpack}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+         
+         \PY{n}{height} \PY{o}{=} \PY{n}{height}\PY{o}{*}\PY{l+m+mf}{1e5}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k}{print} \PY{n}{sahabolt}\PY{p}{(}\PY{n}{T}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{nel}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+3.66211408378e-07
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{def} \PY{n+nf}{H}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{v}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{v}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{+} \PY{n}{a}\PY{o}{/}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}\PY{o}{*}\PY{n}{v}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{def} \PY{n+nf}{NaD1\PYZus{}ext}\PY{p}{(}\PY{n}{wavs}\PY{p}{,} \PY{n}{temp}\PY{p}{,} \PY{n}{eldens}\PY{p}{,} \PY{n}{nhyd}\PY{p}{,} \PY{n}{vmicro}\PY{p}{,} \PY{n}{pgas}\PY{p}{,} \PY{n}{E}\PY{p}{)}\PY{p}{:}
+             
+             \PY{c}{\PYZsh{} wavs = angstrom}
+             \PY{c}{\PYZsh{} wav = cm}
+         
+             \PY{c}{\PYZsh{}convert wavs from angstroms to cgs}
+             \PY{n}{wav} \PY{o}{=} \PY{n}{wavs}\PY{o}{*}\PY{l+m+mf}{1e\PYZhy{}8} \PY{c}{\PYZsh{} cm}
+             \PY{n}{vmicro} \PY{o}{=} \PY{n}{vmicro}\PY{o}{*}\PY{l+m+mf}{1e5}
+             \PY{c}{\PYZsh{}constants}
+             \PY{n}{e} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{e}\PY{o}{.}\PY{n}{gauss}\PY{o}{.}\PY{n}{value}
+             \PY{n}{c} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{c}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+             \PY{n}{me} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{m\PYZus{}e}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+             \PY{n}{k} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{k\PYZus{}B}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+             \PY{n}{h} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{h}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+         
+             \PY{c}{\PYZsh{} initial constants}
+             \PY{n}{constants} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{)}\PY{o}{*}\PY{n}{e}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{p}{(}\PY{n}{me}\PY{o}{*}\PY{n}{c}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
+         
+             \PY{c}{\PYZsh{}oscillator strength}
+             \PY{n}{f} \PY{o}{=} \PY{l+m+mf}{0.318} \PY{c}{\PYZsh{} NaI D1}
+         
+             \PY{c}{\PYZsh{} statistical weight}
+             \PY{n}{g\PYZus{}low} \PY{o}{=} \PY{l+m+mi}{2}
+             \PY{n}{g\PYZus{}up} \PY{o}{=} \PY{l+m+mi}{2} \PY{c}{\PYZsh{} NaI D1}
+         
+             \PY{c}{\PYZsh{}sodium abundance}
+             \PY{n}{A} \PY{o}{=} \PY{l+m+mf}{1.74e\PYZhy{}6}
+         
+             \PY{c}{\PYZsh{} natural broadening}
+             \PY{n}{gamma\PYZus{}rad} \PY{o}{=} \PY{l+m+mf}{6.67e13}\PY{o}{*}\PY{p}{(}\PY{n}{g\PYZus{}low}\PY{o}{/}\PY{n}{g\PYZus{}up}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{f}\PY{o}{/}\PY{p}{(}\PY{p}{(}\PY{n}{wavs}\PY{o}{*}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)} \PY{c}{\PYZsh{} s\PYZca{}\PYZhy{}1}
+         
+         
+             \PY{c}{\PYZsh{} ionization energies from n=1, n=2}
+             \PY{n}{E2} \PY{o}{=} \PY{l+m+mf}{3.03399556416} \PY{c}{\PYZsh{} eV}
+             \PY{n}{E1} \PY{o}{=} \PY{l+m+mf}{5.139} \PY{c}{\PYZsh{} eV}
+         
+             \PY{c}{\PYZsh{} van der Waals broadening}
+             \PY{n}{R} \PY{o}{=} \PY{l+m+mf}{13.6} \PY{c}{\PYZsh{} rydberg in eV}
+             \PY{n}{Z} \PY{o}{=} \PY{l+m+mi}{1}
+             \PY{n}{n2\PYZus{}low} \PY{o}{=} \PY{n}{R} \PY{o}{*} \PY{p}{(}\PY{n}{Z}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{p}{(}\PY{n}{E1}\PY{p}{)}\PY{p}{)}
+             \PY{n}{n2\PYZus{}up} \PY{o}{=} \PY{n}{R} \PY{o}{*} \PY{p}{(}\PY{n}{Z}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{p}{(}\PY{n}{E2}\PY{p}{)}\PY{p}{)}
+             \PY{n}{r2\PYZus{}low} \PY{o}{=} \PY{p}{(}\PY{n}{n2\PYZus{}low}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{Z}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{n2\PYZus{}low} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}
+             \PY{n}{r2\PYZus{}up} \PY{o}{=} \PY{p}{(}\PY{n}{n2\PYZus{}up}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{Z}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{n2\PYZus{}up} \PY{o}{\PYZhy{}} \PY{l+m+mi}{5}\PY{p}{)}
+             \PY{n}{logvdW} \PY{o}{=} \PY{l+m+mf}{6.33} \PY{o}{+} \PY{l+m+mf}{0.4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{r2\PYZus{}up} \PY{o}{\PYZhy{}} \PY{n}{r2\PYZus{}low}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{pgas}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mf}{0.7}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{temp}\PY{p}{)}
+             \PY{n}{gamma\PYZus{}vdW} \PY{o}{=} \PY{l+m+mf}{10.}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{n}{logvdW}\PY{p}{)}
+         
+             \PY{c}{\PYZsh{} total broadening}
+             \PY{n}{gamma} \PY{o}{=} \PY{n}{gamma\PYZus{}rad} \PY{o}{+} \PY{n}{gamma\PYZus{}vdW}
+             
+             \PY{c}{\PYZsh{} wing broadening fudge factor}
+             \PY{c}{\PYZsh{}E = 1e4}
+             
+             \PY{n}{gamma} \PY{o}{=} \PY{n}{gamma}\PY{o}{*}\PY{n}{E}
+         
+             \PY{c}{\PYZsh{}doppler width}
+             \PY{n}{lam0} \PY{o}{=} \PY{l+m+mf}{5895.94} \PY{c}{\PYZsh{} NaD1 Angrstroms in air}
+             \PY{n}{mNa} \PY{o}{=} \PY{l+m+mf}{22.99} \PY{o}{*} \PY{l+m+mf}{1.6605e\PYZhy{}24} \PY{c}{\PYZsh{} g}
+             
+             \PY{n}{dopp\PYZus{}width} \PY{o}{=} \PY{p}{(}\PY{n}{lam0}\PY{o}{*}\PY{l+m+mf}{1e\PYZhy{}8}\PY{p}{)}\PY{o}{/}\PY{n}{c} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temp}\PY{o}{/}\PY{n}{mNa} \PY{o}{+} \PY{n}{vmicro}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
+             \PY{n}{a} \PY{o}{=} \PY{p}{(}\PY{n}{wav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{gamma}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{l+m+mi}{4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{c}\PY{o}{*}\PY{n}{dopp\PYZus{}width}\PY{p}{)}
+             
+             
+             
+             \PY{n}{v} \PY{o}{=} \PY{p}{(}\PY{n}{wav} \PY{o}{\PYZhy{}} \PY{n}{lam0}\PY{o}{*}\PY{l+m+mf}{1e\PYZhy{}8}\PY{p}{)}\PY{o}{/}\PY{n}{dopp\PYZus{}width}
+             
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}    print \PYZsq{}v = \PYZsq{},v}
+         \PY{l+s+sd}{    print \PYZsq{}a = \PYZsq{},a}
+         \PY{l+s+sd}{    print \PYZsq{}r2\PYZus{}low = \PYZsq{},r2\PYZus{}low}
+         \PY{l+s+sd}{    print \PYZsq{}r2\PYZus{}up = \PYZsq{},r2\PYZus{}up}
+         \PY{l+s+sd}{    print \PYZsq{}n2\PYZus{}low = \PYZsq{},n2\PYZus{}low}
+         \PY{l+s+sd}{    print \PYZsq{}n2\PYZus{}up = \PYZsq{},n2\PYZus{}up}
+         \PY{l+s+sd}{    print \PYZsq{}gamma\PYZus{}vdW = \PYZsq{},gamma\PYZus{}vdW\PYZdq{}\PYZdq{}\PYZdq{}}
+         
+             \PY{n}{ion} \PY{o}{=} \PY{l+m+mi}{1}
+             \PY{n}{level} \PY{o}{=} \PY{l+m+mi}{1}
+         
+             \PY{n}{alpha\PYZus{}line} \PY{o}{=} \PY{n}{constants}\PY{o}{*}\PY{n}{wav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{sahabolt}\PY{p}{(}\PY{n}{temp}\PY{p}{,} \PY{n}{eldens}\PY{p}{,} \PY{n}{ion}\PY{p}{,} \PY{n}{level}\PY{p}{)}\PY{o}{*}\PY{n}{nhyd}\PY{o}{*}\PY{n}{A}\PY{o}{*}\PY{n}{f}\PY{o}{*}\PY{p}{(}\PY{n}{H}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{v}\PY{p}{)}\PY{o}{/}\PY{n}{dopp\PYZus{}width}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{h}\PY{o}{*}\PY{n}{c}\PY{o}{/}\PY{p}{(}\PY{n}{wav}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temp}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         
+             
+             \PY{k}{return} \PY{n}{alpha\PYZus{}line}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{NaD1\PYZus{}ext}\PY{p}{(}\PY{l+m+mf}{5995.94}\PY{p}{,} \PY{n}{T}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{nel}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{n\PYZus{}Htotal}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{vturb}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{ptot}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{l+m+mf}{1e4}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} 6.0974035939543008e-18
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c}{\PYZsh{} short\PYZus{}wave = wave\PYZus{}air[(wave\PYZus{}air \PYZgt{} 5887) \PYZam{} (wave\PYZus{}air \PYZlt{} 5892)][::10]}
+         \PY{n}{short\PYZus{}wave} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{5893.94}\PY{p}{,} \PY{l+m+mf}{5897.94}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{)} \PY{c}{\PYZsh{}was 500}
+         \PY{n}{lam0} \PY{o}{=} \PY{l+m+mf}{5895.94}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{short\PYZus{}wave}\PY{p}{,} \PY{n}{NaD1\PYZus{}ext}\PY{p}{(}\PY{n}{short\PYZus{}wave}\PY{p}{,} \PY{n}{T}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{nel}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{n\PYZus{}Htotal}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{vturb}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{ptot}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+         
+         \PY{k}{print} \PY{n}{NaD1\PYZus{}ext}\PY{p}{(}\PY{n}{short\PYZus{}wave}\PY{p}{,} \PY{n}{T}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{nel}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{n\PYZus{}Htotal}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{vturb}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{n}{ptot}\PY{p}{[}\PY{l+m+mi}{40}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.68212275737e-12
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Lab-B3_files/Lab-B3_21_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection*{3.7 Computed Na D1 line
+profile}\label{computed-na-d1-line-profile}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Add the Na I D1 line extinction to the continuous extinction
+  in your integration code from the previous exercise and compute the
+  disk-center Na I D1 profile.}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{k}{def} \PY{n+nf}{exthmin}\PY{p}{(}\PY{n}{wavs}\PY{p}{,}\PY{n}{temps}\PY{p}{,}\PY{n}{eldens}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s+sd}{    H\PYZhy{} extinction.}
+         \PY{l+s+sd}{    }
+         \PY{l+s+sd}{    in:  wav = wavelength [Angstrom] (number or array but then others number)}
+         \PY{l+s+sd}{          temp = temperature [K]  (number or array)}
+         \PY{l+s+sd}{          eldens = electron density [electrons cm\PYZhy{}3] (number or array)}
+         \PY{l+s+sd}{    out: H\PYZhy{}minus bf+ff extinction [cm\PYZca{}2 per neutral hydrogen atom]}
+         \PY{l+s+sd}{          assuming LTE ionization H/H\PYZhy{}min}
+         \PY{l+s+sd}{          NB: includes stimulated emission correction already!}
+         \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+             
+             \PY{n}{k} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{k\PYZus{}B}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+             \PY{n}{h} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{h}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+             \PY{n}{c} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{c}\PY{o}{.}\PY{n}{cgs}\PY{o}{.}\PY{n}{value}
+             
+             \PY{c}{\PYZsh{} other parameters}
+             \PY{n}{theta}\PY{o}{=}\PY{l+m+mf}{5040.}\PY{o}{/}\PY{n}{temps}
+             \PY{n}{elpress}\PY{o}{=}\PY{n}{eldens}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temps}
+         
+             \PY{c}{\PYZsh{} evaluate H\PYZhy{}min bound\PYZhy{}free per H\PYZhy{}min ion = Gray (8.11)}
+             \PY{c}{\PYZsh{} his alpha = my sigma in NGSB/AFYC (per particle without stimulated)}
+             \PY{n}{sigmabf} \PY{o}{=} \PY{l+m+mf}{1.99654} \PY{o}{\PYZhy{}}\PY{l+m+mf}{1.18267e\PYZhy{}5}\PY{o}{*}\PY{n}{wavs} \PY{o}{+}\PY{l+m+mf}{2.64243e\PYZhy{}6}\PY{o}{*}\PY{n}{wavs}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}}\PY{l+m+mf}{4.40524e\PYZhy{}10}\PY{o}{*}\PY{n}{wavs}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3} \PYZbs{}
+                     \PY{o}{+}\PY{l+m+mf}{3.23992e\PYZhy{}14}\PY{o}{*}\PY{n}{wavs}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{4} \PY{o}{\PYZhy{}}\PY{l+m+mf}{1.39568e\PYZhy{}18}\PY{o}{*}\PY{n}{wavs}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{5} \PY{o}{+} \PY{l+m+mf}{2.78701e\PYZhy{}23}\PY{o}{*}\PY{n}{wavs}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{6}
+             \PY{n}{sigmabf}\PY{o}{=}\PY{n}{sigmabf}\PY{o}{*}\PY{l+m+mf}{1e\PYZhy{}18}  \PY{c}{\PYZsh{} cm\PYZca{}2 per H\PYZhy{}min ion}
+             
+             \PY{k}{if} \PY{n+nb}{type}\PY{p}{(}\PY{n}{wavs}\PY{p}{)} \PY{o}{==} \PY{n}{np}\PY{o}{.}\PY{n}{ndarray}\PY{p}{:}
+                 \PY{n}{sigmabf}\PY{p}{[}\PY{n}{wavs} \PY{o}{\PYZgt{}} \PY{l+m+mi}{16444}\PY{p}{]} \PY{o}{=} \PY{l+m+mf}{0.} \PY{c}{\PYZsh{} H\PYZhy{}min ionization limit }
+             \PY{k}{else}\PY{p}{:}
+                 \PY{k}{if} \PY{n}{wavs} \PY{o}{\PYZgt{}} \PY{l+m+mi}{16444}\PY{p}{:}
+                     \PY{n}{sigmabf} \PY{o}{=} \PY{l+m+mf}{0.0}
+                 
+             \PY{c}{\PYZsh{} convert into bound\PYZhy{}free per neutral H atom assuming Saha = Gray p135}
+             \PY{c}{\PYZsh{} units: cm2 per neutral H atom in whatever level (whole stage)}
+             \PY{n}{graysaha}\PY{o}{=}\PY{l+m+mf}{4.158e\PYZhy{}10}\PY{o}{*}\PY{n}{elpress}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{theta}\PY{p}{,}\PY{l+m+mf}{2.5}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{l+m+mf}{10.}\PY{p}{,}\PY{p}{(}\PY{l+m+mf}{0.754}\PY{o}{*}\PY{n}{theta}\PY{p}{)}\PY{p}{)} \PY{c}{\PYZsh{} Gray (8.12)}
+             \PY{n}{kappabf}\PY{o}{=}\PY{n}{sigmabf}\PY{o}{*}\PY{n}{graysaha}  \PY{c}{\PYZsh{} per neutral H atom}
+             \PY{n}{kappabf}\PY{o}{=}\PY{n}{kappabf}\PY{o}{*}\PY{p}{(}\PY{l+m+mf}{1.}\PY{o}{\PYZhy{}}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{h}\PY{o}{*}\PY{n}{c}\PY{o}{/}\PY{p}{(}\PY{n}{wavs}\PY{o}{*}\PY{l+m+mf}{1.0e\PYZhy{}8}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temps}\PY{p}{)}\PY{p}{)}\PY{p}{)} 
+             \PY{c}{\PYZsh{} correct stimulated emission}
+         
+             \PY{c}{\PYZsh{} check Gray\PYZsq{}s Saha\PYZhy{}Boltzmann with AFYC (edition 1999) p168}
+             \PY{c}{\PYZsh{} logratio=\PYZhy{}0.1761\PYZhy{}alog10(elpress)+alog10(2.)+2.5*alog10(temp)\PYZhy{}theta*0.754}
+             \PY{c}{\PYZsh{} print,\PYZsq{}Hmin/H ratio=\PYZsq{},1/(10.\PYZca{}logratio) ; OK, same as Gray factor SB}
+         
+             \PY{c}{\PYZsh{} evaluate H\PYZhy{}min free\PYZhy{}free including stimulated emission = Gray p136}
+             \PY{n}{lwav}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{wavs}\PY{p}{)}
+             \PY{n}{f0} \PY{o}{=}  \PY{o}{\PYZhy{}}\PY{l+m+mf}{2.2763} \PY{o}{\PYZhy{}}\PY{l+m+mf}{1.6850}\PY{o}{*}\PY{n}{lwav} \PY{o}{+}\PY{l+m+mf}{0.76661}\PY{o}{*}\PY{n}{lwav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}}\PY{l+m+mf}{0.0533464}\PY{o}{*}\PY{n}{lwav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+             \PY{n}{f1} \PY{o}{=}  \PY{l+m+mf}{15.2827} \PY{o}{\PYZhy{}}\PY{l+m+mf}{9.2846}\PY{o}{*}\PY{n}{lwav} \PY{o}{+}\PY{l+m+mf}{1.99381}\PY{o}{*}\PY{n}{lwav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}}\PY{l+m+mf}{0.142631}\PY{o}{*}\PY{n}{lwav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+             \PY{n}{f2} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mf}{197.789} \PY{o}{+}\PY{l+m+mf}{190.266}\PY{o}{*}\PY{n}{lwav} \PY{o}{\PYZhy{}}\PY{l+m+mf}{67.9775}\PY{o}{*}\PY{n}{lwav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+}\PY{l+m+mf}{10.6913}\PY{o}{*}\PY{n}{lwav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3} \PY{o}{\PYZhy{}}\PY{l+m+mf}{0.625151}\PY{o}{*}\PY{n}{lwav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{4}
+             \PY{n}{ltheta}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{theta}\PY{p}{)}
+             \PY{n}{kappaff} \PY{o}{=} \PY{l+m+mf}{1.0e\PYZhy{}26}\PY{o}{*}\PY{n}{elpress}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{p}{(}\PY{n}{f0}\PY{o}{+}\PY{n}{f1}\PY{o}{*}\PY{n}{ltheta}\PY{o}{+}\PY{n}{f2}\PY{o}{*}\PY{n}{ltheta}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}   \PY{c}{\PYZsh{} Gray (8.13)}
+         
+             \PY{k}{return} \PY{n}{kappabf}\PY{o}{+}\PY{n}{kappaff}
+         
+         \PY{k+kn}{import} \PY{n+nn}{astropy.units} \PY{k+kn}{as} \PY{n+nn}{u}
+         \PY{k}{def} \PY{n+nf}{planck}\PY{p}{(}\PY{n}{temps}\PY{p}{,} \PY{n}{wavs}\PY{p}{)}\PY{p}{:}
+             
+             \PY{n}{wav} \PY{o}{=} \PY{n}{wavs}\PY{o}{*}\PY{n}{u}\PY{o}{.}\PY{n}{micrometer} \PY{c}{\PYZsh{} to cm}
+             \PY{n}{c} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{c}\PY{o}{.}\PY{n}{cgs}
+             \PY{n}{h} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{h}\PY{o}{.}\PY{n}{cgs}
+             \PY{n}{k} \PY{o}{=} \PY{n}{const}\PY{o}{.}\PY{n}{k\PYZus{}B}\PY{o}{.}\PY{n}{cgs}
+             \PY{n}{temp2} \PY{o}{=} \PY{n}{temps}\PY{o}{*}\PY{n}{u}\PY{o}{.}\PY{n}{K}
+             \PY{n}{b} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{h}\PY{o}{*}\PY{n}{c}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{n}{wav}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{5}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{p}{(}\PY{p}{(}\PY{n}{h}\PY{o}{*}\PY{n}{c}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{wav}\PY{o}{*}\PY{n}{k}\PY{o}{*}\PY{n}{temp2}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}
+             \PY{c}{\PYZsh{} b.to(u.erg / u.cm**2 / u.s / u.Hz,}
+                             \PY{c}{\PYZsh{}equivalencies=u.spectral\PYZus{}density(0.8*u.micrometer))}
+             
+             \PY{k}{return} \PY{n}{b}\PY{o}{.}\PY{n}{to}\PY{p}{(}\PY{n}{u}\PY{o}{.}\PY{n}{erg} \PY{o}{/} \PY{n}{u}\PY{o}{.}\PY{n}{cm}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{/} \PY{n}{u}\PY{o}{.}\PY{n}{s} \PY{o}{/} \PY{n}{u}\PY{o}{.}\PY{n}{micrometer}\PY{p}{,} \PY{n}{equivalencies}\PY{o}{=}\PY{n}{u}\PY{o}{.}\PY{n}{spectral\PYZus{}density}\PY{p}{(}\PY{n}{wav}\PY{p}{)}\PY{p}{)}
+         
+         
+         \PY{k}{def} \PY{n+nf}{emergent}\PY{p}{(}\PY{n}{wl}\PY{p}{,} \PY{n}{heights}\PY{p}{,} \PY{n}{temp}\PY{p}{,} \PY{n}{E}\PY{p}{)}\PY{p}{:}
+             \PY{c}{\PYZsh{} emergent intensity at wavelength wl (micron)}
+         
+             \PY{c}{\PYZsh{} redefine variables to be consistent with code}
+             \PY{n}{nhyd} \PY{o}{=} \PY{n}{n\PYZus{}Htotal} \PY{c}{\PYZsh{} from FALC}
+             \PY{n}{nprot} \PY{o}{=} \PY{n}{n\PYZus{}proton}
+             \PY{n}{nh} \PY{o}{=} \PY{n}{n\PYZus{}Htotal}
+         
+             \PY{n}{ext} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{tau} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{integrand} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{contfunc} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{ints}\PY{o}{=}\PY{l+m+mf}{0.}
+             \PY{n}{hint}\PY{o}{=}\PY{l+m+mf}{0.}
+         
+             \PY{k}{for} \PY{n}{ih} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{n\PYZus{}Htotal}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{tot\PYZus{}ext} \PY{o}{=} \PY{n}{exthmin}\PY{p}{(}\PY{n}{wl}\PY{o}{*}\PY{l+m+mf}{1e4}\PY{p}{,}\PY{n}{temp}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,}\PY{n}{nel}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{nhyd}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{nprot}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)} 
+                 \PY{n}{tot\PYZus{}ext} \PY{o}{+}\PY{o}{=} \PY{l+m+mf}{0.664e\PYZhy{}24}\PY{o}{*}\PY{n}{nel}\PY{p}{[}\PY{n}{ih}\PY{p}{]} 
+                 \PY{n}{tot\PYZus{}ext} \PY{o}{+}\PY{o}{=} \PY{n}{NaD1\PYZus{}ext}\PY{p}{(}\PY{n}{wl}\PY{o}{*}\PY{l+m+mf}{1e4}\PY{p}{,} \PY{n}{temp}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,} \PY{n}{nel}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,} \PY{n}{n\PYZus{}Htotal}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,} \PY{n}{vturb}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,} \PY{n}{ptot}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,} \PY{n}{E}\PY{p}{)}
+                 \PY{c}{\PYZsh{}ext[ih] = exthmin(wl*1e4,temp[ih],nel[ih])*(nhyd[ih] \PYZhy{} nprot[ih]) + 0.664e\PYZhy{}24*nel[ih]}
+                 \PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{tot\PYZus{}ext}
+                 \PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{+}\PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{heights}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{heights}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{planck}\PY{p}{(}\PY{n}{temp}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,}\PY{n}{wl}\PY{p}{)}\PY{o}{.}\PY{n}{value}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{ints} \PY{o}{=} \PY{n}{ints} \PY{o}{+} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{+}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{hint} \PY{o}{=} \PY{n}{hint} \PY{o}{+} \PY{n}{height}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{*}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{+}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{contfunc}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{*}\PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{p}{]}
+         
+             \PY{n}{hmean}\PY{o}{=}\PY{n}{hint}\PY{o}{/}\PY{n}{ints}
+             
+             \PY{k}{return} \PY{n}{ints}\PY{p}{,} \PY{n}{contfunc}\PY{p}{,} \PY{n}{hmean}\PY{p}{,} \PY{n}{tau}
+         
+         
+         \PY{k}{def} \PY{n+nf}{emergent\PYZus{}Hmin}\PY{p}{(}\PY{n}{wl}\PY{p}{,} \PY{n}{heights}\PY{p}{,} \PY{n}{temp}\PY{p}{)}\PY{p}{:}
+             \PY{c}{\PYZsh{} emergent intensity at wavelength wl (micron)}
+         
+             \PY{c}{\PYZsh{} redefine variables to be consistent with code}
+             \PY{n}{nhyd} \PY{o}{=} \PY{n}{n\PYZus{}Htotal} \PY{c}{\PYZsh{} from FALC}
+             \PY{n}{nprot} \PY{o}{=} \PY{n}{n\PYZus{}proton}
+             \PY{n}{nh} \PY{o}{=} \PY{n}{n\PYZus{}Htotal}
+         
+             \PY{n}{ext} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{tau} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{integrand} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{contfunc} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{nh}\PY{p}{)}
+             \PY{n}{ints}\PY{o}{=}\PY{l+m+mf}{0.}
+             \PY{n}{hint}\PY{o}{=}\PY{l+m+mf}{0.}
+         
+             \PY{k}{for} \PY{n}{ih} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{n\PYZus{}Htotal}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{exthmin}\PY{p}{(}\PY{n}{wl}\PY{o}{*}\PY{l+m+mf}{1e4}\PY{p}{,}\PY{n}{temp}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,}\PY{n}{nel}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{nhyd}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{nprot}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)} \PY{o}{+} \PY{l+m+mf}{0.664e\PYZhy{}24}\PY{o}{*}\PY{n}{nel}\PY{p}{[}\PY{n}{ih}\PY{p}{]}
+                 \PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{+}\PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{heights}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{heights}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{planck}\PY{p}{(}\PY{n}{temp}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{,}\PY{n}{wl}\PY{p}{)}\PY{o}{.}\PY{n}{value}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{ints} \PY{o}{=} \PY{n}{ints} \PY{o}{+} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{+}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{hint} \PY{o}{=} \PY{n}{hint} \PY{o}{+} \PY{n}{height}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{*}\PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{+}\PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{tau}\PY{p}{[}\PY{n}{ih}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{contfunc}\PY{p}{[}\PY{n}{ih}\PY{p}{]} \PY{o}{=} \PY{n}{integrand}\PY{p}{[}\PY{n}{ih}\PY{p}{]}\PY{o}{*}\PY{n}{ext}\PY{p}{[}\PY{n}{ih}\PY{p}{]}
+         
+             \PY{n}{hmean}\PY{o}{=}\PY{n}{hint}\PY{o}{/}\PY{n}{ints}
+             
+             \PY{k}{return} \PY{n}{ints}\PY{p}{,} \PY{n}{contfunc}\PY{p}{,} \PY{n}{hmean}\PY{p}{,} \PY{n}{tau}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{E} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}
+         
+         \PY{n}{short\PYZus{}wave} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{5893.94}\PY{p}{,} \PY{l+m+mf}{5897.94}\PY{p}{,} \PY{l+m+mi}{500}\PY{p}{)} \PY{c}{\PYZsh{}was 500}
+         \PY{n}{em\PYZus{}intense\PYZus{}arr} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{[}\PY{n}{short\PYZus{}wave}\PY{o}{.}\PY{n}{size}\PY{p}{,}\PY{n}{E}\PY{o}{.}\PY{n}{size}\PY{p}{]}\PY{p}{)}
+         \PY{n}{em\PYZus{}intense\PYZus{}Hmin\PYZus{}arr} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{short\PYZus{}wave}\PY{p}{)}
+         
+         \PY{k}{for} \PY{n}{j}\PY{p}{,}\PY{n}{ee} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{E}\PY{p}{)}\PY{p}{:}
+             \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{w} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{short\PYZus{}wave}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{em\PYZus{}intense\PYZus{}arr}\PY{p}{[}\PY{n}{i}\PY{p}{,}\PY{n}{j}\PY{p}{]}\PY{p}{,} \PY{n}{tmp}\PY{p}{,} \PY{n}{tmp}\PY{p}{,} \PY{n}{tmp} \PY{o}{=} \PY{n}{emergent}\PY{p}{(}\PY{n}{w}\PY{o}{/}\PY{l+m+mf}{1e4}\PY{p}{,} \PY{n}{height}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{ee}\PY{p}{)}
+                 \PY{n}{em\PYZus{}intense\PYZus{}Hmin\PYZus{}arr}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{tmp}\PY{p}{,} \PY{n}{tmp}\PY{p}{,} \PY{n}{tmp} \PY{o}{=} \PY{n}{emergent\PYZus{}Hmin}\PY{p}{(}\PY{n}{w}\PY{o}{/}\PY{l+m+mf}{1e4}\PY{p}{,} \PY{n}{height}\PY{p}{,} \PY{n}{T}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{k}{print} \PY{n}{short\PYZus{}wave}\PY{o}{.}\PY{n}{shape}\PY{p}{,} \PY{n}{em\PYZus{}intense\PYZus{}arr}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(500,) (500, 2)
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=}  \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+         
+         \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{ee} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{E}\PY{p}{)}\PY{p}{:}
+             \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{short\PYZus{}wave}\PY{p}{,} \PY{n}{em\PYZus{}intense\PYZus{}arr}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{n}{i}\PY{p}{]}\PY{o}{/}\PY{n}{em\PYZus{}intense\PYZus{}Hmin\PYZus{}arr}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{E = \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{ee}\PY{p}{)}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{wave\PYZus{}air}\PY{p}{,} \PY{n}{spec}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{black}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s}{r\PYZsq{}}\PY{l+s}{observed}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{flux\PYZus{}unit} \PY{o}{=} \PY{l+s}{r\PYZsq{}}\PY{l+s}{Intensity [erg cm\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}2\PYZcb{}\PYZdl{} s\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}1\PYZcb{}\PYZdl{} ster\PYZdl{}\PYZca{}\PYZob{}\PYZhy{}1\PYZcb{} }\PY{l+s}{\PYZbs{}}\PY{l+s}{mu m\PYZca{}\PYZob{}\PYZhy{}1\PYZcb{}\PYZdl{}]}\PY{l+s}{\PYZsq{}}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{wavelength \PYZdl{}[}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu m]\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{n}{flux\PYZus{}unit}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{5890}\PY{p}{,} \PY{l+m+mi}{5900}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{best}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{final\PYZus{}NaID1\PYZus{}withE.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Lab-B3_files/Lab-B3_26_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{Compare the computed line profile to the observed line profile
+  and discuss the differences. Explain why your computed profile has a
+  line-center reversal.}
+\end{itemize}
+
+\begin{quote}
+The computed Na I D\(_{1}\) line has a line-center reversal since we are
+assuming LTE and the Na I D lines are strong scatterers, thus in NLTE.
+The line center reversal is due to the line center ``feeling'' the
+chromospheric temperature rise since we are assuming LTE. In the NLTE
+case, the line is a strong scatterer and would not see the temperature
+reversal, scattering its way out of the atmosphere.
+\end{quote}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{Traditionally, stellar abundance determiners vary a
+  collisional enhancement factor E by which ,vdW is multiplied in ad-hoc
+  ``fudge-factor'' fashion in order to obtain a better fit of the line
+  wings. You may try such, or better broadening recipes from Paul
+  Barklem at http://www.astro.uu.se/˜barklem.}
+\end{itemize}
+
+\begin{quote}
+Using a fudge factor of \(E = 5\) gives a line in much better agreement
+with the observed line wings.
+\end{quote}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
